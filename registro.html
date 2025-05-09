@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - MYFILM</title>
+  <style>
+    body { background-color: #040D19; color: white; font-family: 'Public Sans', sans-serif; padding: 2rem; }
+    form { max-width: 420px; margin: 2rem auto; }
+    input, select { display: block; width: 100%; margin-bottom: 1rem; padding: 0.75rem; border-radius: 6px; border: none; }
+    button { padding: 0.75rem 2rem; background: #793DF0; color: white; border: none; border-radius: 6px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Crear cuenta</h1>
+  <form>
+    <input type="text" placeholder="Nombre completo" required />
+    <input type="email" placeholder="Correo electrónico" required />
+    <input type="password" placeholder="Contraseña" required />
+    <select required>
+      <option disabled selected>Selecciona tu plataforma favorita</option>
+      <option>Netflix</option>
+      <option>HBO Max</option>
+      <option>Prime Video</option>
+      <option>Disney+</option>
+      <option>Filmin</option>
+    </select>
+    <button type="submit">Crear cuenta</button>
+  </form>
+</body>
+</html>
