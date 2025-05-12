@@ -1,1 +1,0 @@
-// JavaScript para efectos y scroll de la landing
