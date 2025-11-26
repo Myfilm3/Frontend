@@ -6,6 +6,9 @@ import CarouselSection from '@/components/layout/CarouselSection';
 import MoodsSection from '@/components/home/MoodsSection';
 import MostWatchedSection from '@/components/home/MostWatchedSection';
 
+// ISR: refrescamos los datos de la home cada 60s
+export const revalidate = 60;
+
 function FullBleed90vw({ children }: { children: ReactNode }) {
   return (
     <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-[5vw]">
@@ -45,44 +48,56 @@ export default async function Home() {
     <>
       {heroItems.length > 0 && <Hero items={heroItems} fullBleed />}
 
-      <main className="relative z-[5] pt-0 space-y-12">
+      <main
+        id="main"
+        className="relative z-[5] pt-0 space-y-12"
+        aria-label="Contenido principal de MyFilm"
+      >
         {/* Recomendaciones para ti → asomando 250px dentro del hero */}
-        <div className="-mt-[250px]">
+        <section aria-label="Recomendaciones para ti" className="-mt-[250px]">
           <FullBleed90vw>
             <CarouselSection
               title="Recomendaciones para ti"
               items={(popularAll.results ?? []).slice(0, 22)}
             />
           </FullBleed90vw>
-        </div>
+        </section>
 
         {/* Mejor valoradas (solo películas) */}
-        <FullBleed90vw>
-          <CarouselSection
-            title="Mejor valoradas"
-            items={(bestRatedMovies.results ?? []).slice(0, 22)}
-          />
-        </FullBleed90vw>
+        <section aria-label="Mejor valoradas">
+          <FullBleed90vw>
+            <CarouselSection
+              title="Mejor valoradas"
+              items={(bestRatedMovies.results ?? []).slice(0, 22)}
+            />
+          </FullBleed90vw>
+        </section>
 
         {/* Moods / ¿Qué te apetece sentir hoy? */}
-        <FullBleed90vw>
-          <MoodsSection />
-        </FullBleed90vw>
+        <section aria-label="¿Qué te apetece sentir hoy?">
+          <FullBleed90vw>
+            <MoodsSection />
+          </FullBleed90vw>
+        </section>
 
         {/* Lo más visto en tus plataformas (panel grande + carrusel derecha) */}
-        <FullBleed90vw>
-          <MostWatchedSection
-            items={(mostWatchedAll.results ?? []).slice(0, 12)}
-          />
-        </FullBleed90vw>
+        <section aria-label="Lo más visto en tus plataformas">
+          <FullBleed90vw>
+            <MostWatchedSection
+              items={(mostWatchedAll.results ?? []).slice(0, 12)}
+            />
+          </FullBleed90vw>
+        </section>
 
         {/* Próximamente */}
-        <FullBleed90vw>
-          <CarouselSection
-            title="Próximamente"
-            items={(upcomingMovies.results ?? []).slice(0, 22)}
-          />
-        </FullBleed90vw>
+        <section aria-label="Próximamente">
+          <FullBleed90vw>
+            <CarouselSection
+              title="Próximamente"
+              items={(upcomingMovies.results ?? []).slice(0, 22)}
+            />
+          </FullBleed90vw>
+        </section>
       </main>
     </>
   );
